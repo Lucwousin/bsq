@@ -1,7 +1,5 @@
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include "bsqstructs.h"
+#include <stdlib.h>
 
 void	print(struct s_map map);
 
@@ -9,6 +7,7 @@ int	parse_header(struct s_map *map, char *buf, int len)
 {
 	int		i;
 
+	printf("len = %d\n%c\n", len, buf[len]);
 	if (len <= 3 || buf[len] != '\n')
 		return (0);
 	i = 0;
@@ -103,28 +102,4 @@ int	parse(struct s_map *map, char *buf, int n_bytes)
 	if (!allocate_map(map) || !fill_map(map, buf + start_map))
 		return (0);
 	return (1);
-}
-
-int	read_file(struct s_map *map, char *file)
-{
-	int		fd;
-	int		rv;
-	char	*buf;
-
-	if (file == 0)
-		fd = 0;
-	else
-		fd = open(file, O_RDONLY);
-	if (fd == -1)
-		return (0);
-	buf = malloc(100000);
-	if (!buf)
-	{
-		close(fd);
-		return (0);
-	}
-	 rv = parse(map, buf, read(fd, buf, 100000));
-	 free(buf);
-	 close(fd);
-	 return (rv);
 }

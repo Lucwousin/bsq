@@ -1,5 +1,6 @@
 #include "bsqstructs.h"
 #include <unistd.h>
+#include <stdlib.h>
 
 void try_s(struct s_map map, struct s_square *s, int size)
 {
@@ -75,9 +76,11 @@ void	print_map(struct s_map map)
 			write(1, &map.map[y][x], 1);
 			++x;
 		}
+		free(map.map[y]);
 		write(1, "\n", 1);
 		++y;
 	}
+	free(map.map);
 }
 
 void	solve(struct s_map map)
