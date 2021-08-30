@@ -5,7 +5,7 @@
 
 int	parse(struct s_map *map, char *buf, int n_bytes);
 
-int read_from(int fd, char *buf)
+int	read_from(int fd, char *buf)
 {
 	int	read_b;
 	int	read_just_now;

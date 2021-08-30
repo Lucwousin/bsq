@@ -7,7 +7,6 @@ int	parse_header(struct s_map *map, char *buf, int len)
 {
 	int		i;
 
-	printf("len = %d\n%c\n", len, buf[len]);
 	if (len <= 3 || buf[len] != '\n')
 		return (0);
 	i = 0;

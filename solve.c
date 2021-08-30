@@ -2,12 +2,12 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void try_s(struct s_map map, struct s_square *s, int size)
+void	try_s(struct s_map map, struct s_square *s, int size)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 	int	xmax;
-	int ymax;
+	int	ymax;
 
 	ymax = s->y + size;
 	xmax = s->x + size;
@@ -40,12 +40,12 @@ struct s_square	try_square(struct s_map map, int x, int y)
 	return (s);
 }
 
-void fill_square(struct s_map map, struct s_square biggest)
+void	fill_square(struct s_map map, struct s_square biggest)
 {
 	int	xmax;
-	int ymax;
-	int x;
-	int y;
+	int	ymax;
+	int	x;
+	int	y;
 
 	xmax = biggest.x + biggest.size;
 	ymax = biggest.y + biggest.size;
@@ -64,8 +64,8 @@ void fill_square(struct s_map map, struct s_square biggest)
 
 void	print_map(struct s_map map)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (y < map.height)
@@ -87,8 +87,8 @@ void	solve(struct s_map map)
 {
 	struct s_square	current;
 	struct s_square	biggest;
-	int 			x;
-	int 			y;
+	int				x;
+	int				y;
 
 	y = 0;
 	while (y < map.height)
