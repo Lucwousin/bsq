@@ -6,7 +6,7 @@ void	solve(struct s_map map);
 
 void	map_error(void)
 {
-	write(1, "map error", 9);
+	write(1, "map error\n", 10);
 }
 
 int	main(int argc, char **argv)
@@ -20,7 +20,6 @@ int	main(int argc, char **argv)
 			map_error();
 		else
 			solve(map);
-		write(1, "\n", 1);
 	}
 	else
 	{
@@ -31,7 +30,8 @@ int	main(int argc, char **argv)
 				map_error();
 			else
 				solve(map);
-			write(1, "\n", 1);
+			if (argc > 2 && i != argc - 1)
+				write(1, "\n", 1);
 			++i;
 		}
 	}
