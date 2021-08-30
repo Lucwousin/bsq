@@ -23,6 +23,7 @@ int	main(int argc, char **argv)
 			map_error();
 		else
 			solve(map);
+		write(1, "\n", 1);
 	}
 	else
 	{
@@ -34,6 +35,7 @@ int	main(int argc, char **argv)
 			else
 				solve(map);
 			write(1, "\n", 1);
+			++i;
 		}
 	}
 }
