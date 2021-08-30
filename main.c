@@ -1,15 +1,12 @@
 #include <unistd.h>
 #include "bsqstructs.h"
 
-int	read_file(struct s_map *map, char *file);
+int		read_file(struct s_map *map, char *file);
+void	solve(struct s_map map);
 
 void	map_error(void)
 {
 	write(1, "map error", 9);
-}
-
-void	solve(struct s_map map)
-{
 }
 
 int	main(int argc, char **argv)
