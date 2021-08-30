@@ -1,9 +1,15 @@
 #include <unistd.h>
 #include "map.h"
 
+int	read_file(struct s_map *map, char *file);
+
 void	map_error(void)
 {
 	write(1, "map error", 9);
+}
+
+void	solve(struct s_map map)
+{
 }
 
 int	main(int argc, char **argv)
