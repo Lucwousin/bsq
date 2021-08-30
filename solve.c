@@ -1,4 +1,5 @@
 #include "bsqstructs.h"
+#include <unistd.h>
 
 void try_s(struct s_map map, struct s_square *s, int size)
 {
@@ -38,7 +39,48 @@ struct s_square	try_square(struct s_map map, int x, int y)
 	return (s);
 }
 
-void solve(struct s_map map)
+void fill_square(struct s_map map, struct s_square biggest)
+{
+	int	xmax;
+	int ymax;
+	int x;
+	int y;
+
+	xmax = biggest.x + biggest.size;
+	ymax = biggest.y + biggest.size;
+	y = biggest.y;
+	while (y < ymax)
+	{
+		x = biggest.x;
+		while (x < xmax)
+		{
+			map.map[y][x] = map.symbols[2];
+			++x;
+		}
+		++y;
+	}
+}
+
+void	print_map(struct s_map map)
+{
+	int x;
+	int y;
+
+	y = 0;
+	while (y < map.height)
+	{
+		x = 0;
+		while (x < map.width)
+		{
+			write(1, &map.map[y][x], 1);
+			++x;
+		}
+		write(1, "\n", 1);
+		++y;
+	}
+}
+
+void	solve(struct s_map map)
 {
 	struct s_square	current;
 	struct s_square	biggest;
@@ -58,5 +100,6 @@ void solve(struct s_map map)
 		}
 		++y;
 	}
-	printf("%d, %d size %d\n", biggest.x, biggest.y, biggest.size);
+	fill_square(map, biggest);
+	print_map(map);
 }
