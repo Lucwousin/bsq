@@ -97,7 +97,8 @@ int	parse(struct s_map *map, char *buf, int n_bytes)
 		++i;
 		++map->width;
 	}
-	if (((n_bytes - i + 1) / (map->width + 1)) != map->height - 1)
+	if (((n_bytes - i + 1) / (map->width + 1)) != map->height - 1
+		|| map->height == 0 || map->width == 0)
 		return (0);
 	if (!allocate_map(map) || !fill_map(map, buf + start_map))
 		return (0);
