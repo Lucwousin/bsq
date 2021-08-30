@@ -1,4 +1,4 @@
-#include "map.h"
+#include "bsqstructs.h"
 #include <stdio.h>
 
 void	print(struct s_map map)

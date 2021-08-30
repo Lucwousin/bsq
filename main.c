@@ -1,5 +1,5 @@
 #include <unistd.h>
-#include "map.h"
+#include "bsqstructs.h"
 
 int	read_file(struct s_map *map, char *file);
 
