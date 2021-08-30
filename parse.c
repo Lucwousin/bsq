@@ -86,6 +86,10 @@ int	parse(struct s_map *map, char *buf, int n_bytes)
 		++i;
 	if (!parse_header(map, buf, i++))
 		return (0);
+	if (map->symbols[0] == map->symbols[1]
+		|| map->symbols[0] == map->symbols[2]
+		|| map->symbols[1] == map->symbols[2])
+		return (0);
 	map->width = 0;
 	start_map = i;
 	while (i < n_bytes && buf[i] != '\n')
@@ -95,9 +99,7 @@ int	parse(struct s_map *map, char *buf, int n_bytes)
 	}
 	if (((n_bytes - i + 1) / (map->width + 1)) != map->height - 1)
 		return (0);
-	if (!allocate_map(map))
-		return (0);
-	if (!fill_map(map, buf + start_map))
+	if (!allocate_map(map) || !fill_map(map, buf + start_map))
 		return (0);
 	return (1);
 }
