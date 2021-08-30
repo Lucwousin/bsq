@@ -12,3 +12,6 @@ solve.o: solve.c
 
 parse.o: parse.c
 	gcc -c -Wall -Werror -Wextra parse.c
+
+clean:
+	rm *.o bsq
