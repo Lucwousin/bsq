@@ -6,24 +6,26 @@ void	try_s(struct s_map map, struct s_square *s, int size)
 {
 	int	x;
 	int	y;
-	int	xmax;
-	int	ymax;
 
-	ymax = s->y + size;
-	xmax = s->x + size;
+	x = s->x + size - 1;
 	y = s->y;
-	while (y < ymax)
+	while (y < s->y + size)
 	{
-		x = s->x;
-		while (x < xmax)
-		{
-			if (x >= map.width || y >= map.height)
-				return ;
-			if (map.map[y][x] == map.symbols[1])
-				return ;
-			++x;
-		}
+		if (x >= map.width || y >= map.height)
+			return ;
+		if (map.map[y][x] == map.symbols[1])
+			return ;
 		++y;
+	}
+	x = s->x;
+	y = s->y + size - 1;
+	while (x < s->x + size)
+	{
+		if (x >= map.width || y >= map.height)
+			return ;
+		if (map.map[y][x] == map.symbols[1])
+			return ;
+		++x;
 	}
 	s->size = size;
 	try_s(map, s, size + 1);
