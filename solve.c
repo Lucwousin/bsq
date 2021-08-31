@@ -101,7 +101,10 @@ void	solve(struct s_map map)
 			current = try_square(map, x, y);
 			if (current.size > biggest.size)
 				biggest = current;
-			++x;
+			if (current.size > 0)
+				x += current.size;
+			else
+				++x;
 		}
 		++y;
 	}
