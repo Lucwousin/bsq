@@ -1,8 +1,8 @@
-#define BUF_SIZE 10000000
 #include "bsqstructs.h"
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
+#define BUF_SIZE 10000000
 
 int	parse(struct s_map *map, char *buf, int n_bytes);
 
