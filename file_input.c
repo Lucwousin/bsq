@@ -1,3 +1,4 @@
+#define BUF_SIZE 10000000
 #include "bsqstructs.h"
 #include <fcntl.h>
 #include <stdlib.h>
@@ -11,7 +12,7 @@ int	read_from(int fd, char *buf)
 	int	read_just_now;
 	int	to_read;
 
-	to_read = 1000000;
+	to_read = BUF_SIZE;
 	read_b = 0;
 	while (1)
 	{
@@ -36,7 +37,7 @@ int	read_file(struct s_map *map, char *file)
 		fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (0);
-	buf = malloc(1000000);
+	buf = malloc(BUF_SIZE);
 	if (!buf)
 	{
 		close(fd);
